@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: demo-rollout
+  namespace: app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demo
+  template:
+    metadata:
+      labels:
+        app: demo
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:1.25
+  strategy:
+    canary:
+      stableService: demo-stable
+      canaryService: demo-canary
+      trafficRouting:
+        plugins:
+          argoproj-labs/gatewayAPI:
+            httpRoute: demo-route
+            namespace: app
+      steps:
+        - setWeight: 20
+        - pause: {}
+        - setWeight: 50
+        - pause: {}
