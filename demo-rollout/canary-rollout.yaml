@@ -24,7 +24,7 @@ spec:
       trafficRouting:
         plugins:
           argoproj-labs/gatewayAPI:
-            httpRoute: demo-route
+            httpRoute: demo-route-01
             namespace: app
       steps:
         - setWeight: 20
