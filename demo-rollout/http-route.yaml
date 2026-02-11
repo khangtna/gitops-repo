@@ -13,5 +13,5 @@ spec:
           port: 80
           weight: 100
         - name: demo-canary
-          port: 80
+          port: 8080
           weight: 0
