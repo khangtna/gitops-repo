@@ -4,8 +4,8 @@ metadata:
   name: demo-route-01
   namespace: app
   labels:
-    rollouts.argoproj.io/http-route-canary: "true"
-    rollouts.argoproj.io/http-route-canary-2: "true"
+    # rollouts.argoproj.io/http-route-canary: "true"
+    rollouts.argoproj.io/gatewayapi-canary: "true"
     # rollouts.argoproj.io/gatewayapi-canary: in-progress
     # rollouts.argoproj.io/gatewayapi-canary: done
 spec:
@@ -16,7 +16,7 @@ spec:
     - backendRefs:
         - name: demo-stable
           port: 80
-          weight: 90
+          weight: 100
         - name: demo-canary
           port: 80
-          weight: 10
+          weight: 0
