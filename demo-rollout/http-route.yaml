@@ -3,9 +3,9 @@ kind: HTTPRoute
 metadata:
   name: demo-route-01
   namespace: app
-  # labels:
-  #   rollouts.argoproj.io/http-route-canary: "true"
-  #   rollouts.argoproj.io/http-route-canary-2: "true"
+  labels:
+    # rollouts.argoproj.io/http-route-canary: "true"
+    rollouts.argoproj.io/gatewayapi-canary: in-progress
 spec:
   parentRefs:
     - name: gateway-api
