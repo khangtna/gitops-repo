@@ -5,6 +5,7 @@ metadata:
   namespace: app
   labels:
     rollouts.argoproj.io/http-route-canary: "true"
+    rollouts.argoproj.io/http-route-canary-2: "true"
 spec:
   parentRefs:
     - name: gateway-api
