@@ -26,8 +26,8 @@ spec:
           argoproj-labs/gatewayAPI:
             httpRoute: demo-route-01
             namespace: app
-            inProgressLabelKey: test-canary
-            inProgressLabelValue: working
+            inProgressLabelKey: "test-canary"
+            inProgressLabelValue: "working"
             # disableInProgressLabel: fasle
       steps:
         - setWeight: 20
