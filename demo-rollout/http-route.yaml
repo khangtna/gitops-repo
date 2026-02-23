@@ -8,6 +8,7 @@ metadata:
     rollouts.argoproj.io/gatewayapi-canary: not-run
     # rollouts.argoproj.io/gatewayapi-canary: in-progress
     # rollouts.argoproj.io/gatewayapi-canary: done
+    test-canary: not-run
 spec:
   parentRefs:
     - name: gateway-api
