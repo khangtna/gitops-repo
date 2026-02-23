@@ -28,7 +28,7 @@ spec:
             namespace: app
             inProgressLabelKey: test-canary
             inProgressLabelValue: working
-            disableInProgressLabel: fasle
+            # disableInProgressLabel: fasle
       steps:
         - setWeight: 20
         - pause: {}
