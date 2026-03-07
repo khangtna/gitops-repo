@@ -1,0 +1,23 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: demo-route-01
+  namespace: app
+  labels:
+    # rollouts.argoproj.io/http-route-canary: "true"
+    # rollouts.argoproj.io/gatewayapi-canary: not-run
+    # rollouts.argoproj.io/gatewayapi-canary: in-progress
+    rollouts.argoproj.io/gatewayapi-canary: done
+    # test-canary: working
+spec:
+  parentRefs:
+    - name: gateway-api
+      namespace: nginx-gateway
+  rules:
+    - backendRefs:
+        - name: demo-stable
+          port: 80
+          weight: 100
+        - name: demo-canary
+          port: 80
+          weight: 0
