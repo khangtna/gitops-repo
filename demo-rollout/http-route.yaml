@@ -12,14 +12,37 @@ metadata:
     # rollouts.argoproj.io/gatewayapi-canary: done
     # test-canary: working
 spec:
+  # parentRefs:
+  #   - name: gateway-api
+  #     namespace: nginx-gateway
+  # rules:
+  #   - backendRefs:
+  #       - name: demo-stable
+  #         port: 80
+  #         weight: 100
+  #       - name: demo-canary
+  #         port: 80
+  #         weight: 0
   parentRefs:
-    - name: gateway-api
+    - group: gateway.networking.k8s.io
+      kind: Gateway
+      name: gateway-api
       namespace: nginx-gateway
   rules:
     - backendRefs:
-        - name: demo-stable
+        - group: ''
+          kind: Service
+          name: demo-stable
           port: 80
           weight: 100
-        - name: demo-canary
+        - group: ''
+          kind: Service
+          name: demo-canary
           port: 80
           weight: 0
+      matches:
+        - path:
+            type: PathPrefix
+            value: /
+
+  
